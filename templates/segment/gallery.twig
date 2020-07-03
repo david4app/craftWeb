@@ -1,0 +1,9 @@
+{% set module = module %}
+<div id="gallery" class="gallery masonry">
+  	<div class="grid-sizer"></div>
+	<div class="gutter-sizer"></div>
+	 {% for image in module.images.all() %}  
+	 	{% set imageEntry = image.accommodation.one() %}
+  		<div class="item"><a href="{{image.url}}" title="{{image.title}}" data-entryurl="{% if imageEntry %}{{imageEntry.url}}{% endif %}" data-buttonlabel="{{module.popUpButtonLabel}}" ><img src="{{image.url}}" alt="{{image.title}}"></a></div>
+	{% endfor %}
+</div>

@@ -1,0 +1,81 @@
+{% js %}
+{% do view.registerJsFile('/assets/scripts/jquery-3.4.1.min.js') %}
+{% do view.registerJsFile('/assets/scripts/jquery-migrate-3.1.0.min.js') %}
+{% do view.registerJsFile('/assets/scripts/mmenu.min.js') %}
+{% do view.registerJsFile('/assets/scripts/chosen.min.js') %}
+{% do view.registerJsFile('/assets/scripts/slick.min.js') %}
+{% do view.registerJsFile('/assets/scripts/rangeslider.min.js') %}
+{% do view.registerJsFile('/assets/scripts/magnific-popup.min.js') %}
+{% do view.registerJsFile('/assets/scripts/waypoints.min.js') %}
+{% do view.registerJsFile('/assets/scripts/counterup.min.js') %}
+{% do view.registerJsFile('/assets/scripts/jquery-ui.min.js') %}
+{% do view.registerJsFile('/assets/scripts/tooltips.min.js') %}
+{% do view.registerJsFile('/assets/scripts/custom.js') %}
+</script>
+{#}
+    function initAutocomplete() {
+    var input = document.getElementById('autocomplete-input');
+    var autocomplete = new google.maps.places.Autocomplete(input);
+
+    autocomplete.addListener('place_changed', function() {
+      var place = autocomplete.getPlace();
+      if (!place.geometry) {
+        return;
+      }
+    });
+
+    if ($('.main-search-input-item')[0]) {
+        setTimeout(function(){ 
+            $(".pac-container").prependTo("#autocomplete-container");
+        }, 300);
+    }
+}
+</script>
+
+<script src="https://maps.googleapis.com/maps/api/js?libraries=places&callback=initAutocomplete"></script>
+#}
+
+<!-- Booking Widget - Quantity Buttons -->
+<script src="/assets/scripts/quantityButtons.js"></script>
+
+{#<!-- Date Range Picker - docs: http://www.daterangepicker.com/ -->#}
+<script src="/assets/scripts/moment.min.js"></script>
+<script src="/assets/scripts/daterangepicker.js"></script>
+
+<script>
+$(function() {
+
+    var start = moment().subtract(0, 'days');
+    var end = moment().add(2, 'days');
+
+    function cb(start, end) {
+        $('#booking-date-search').html(start.format('MMMM D, YYYY') + ' - ' + end.format('MMMM D, YYYY'));
+    }
+    cb(start, end);
+    $('#booking-date-search').daterangepicker({
+        "opens": "right",
+        "autoUpdateInput": true,
+        "alwaysShowCalendars": true,
+        startDate: start,
+        endDate: end
+    }, cb);
+
+    cb(start, end);
+
+});
+
+{#// Calendar animation and visual settings#}
+$('#booking-date-search').on('show.daterangepicker', function(ev, picker) {
+    $('.daterangepicker').addClass('calendar-visible calendar-animated bordered-style');
+    $('.daterangepicker').removeClass('calendar-hidden');
+});
+$('#booking-date-search').on('hide.daterangepicker', function(ev, picker) {
+    $('.daterangepicker').removeClass('calendar-visible');
+    $('.daterangepicker').addClass('calendar-hidden');
+});
+
+$(window).on('load', function() {
+    $('#booking-date-search').val('');
+});
+
+{% endjs %}

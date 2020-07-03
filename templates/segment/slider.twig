@@ -1,0 +1,6 @@
+{% set images = images.all() %}
+<div class="listing-slider mfp-gallery-container margin-bottom-0">
+	{% for image in images %}
+	<a href="{{image.url}}" data-background-image="{{image.url}}" class="item mfp-gallery" title="{{image.title}}"></a>
+	{% endfor %}
+</div>

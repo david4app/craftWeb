@@ -1,0 +1,25 @@
+{% extends 'layout' %}
+{% block main %}
+
+{% include 'segment/titlebar.twig' with{ 'heading' : entry.title} %}
+<!-- Container -->
+<div class="container margin-bottom-80">
+
+	<div class="row">
+		<div class="col-md-12">
+			<section id="not-found" class="center">
+				<h2>404 <i class="fa fa-question-circle"></i></h2>
+				<p>{{entry.pageText404}}</p>
+			</section>
+
+			{% if not entry.button.isEmpty() %}
+			<div class="col-lg-8 col-lg-offset-2 text-center">
+				<a href="{{entry.button.getUrl()}}" class="button medium"><i class="im im-icon-Left-4"></i> {{entry.button.getText()|raw}}</a>
+			</div>
+			{% endif %}
+		</div>
+	</div>
+
+</div>
+<!-- Container / End -->
+{% endblock %}

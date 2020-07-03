@@ -1,0 +1,73 @@
+{% set module = module %}
+{% set backgroundImage = module.backgroundImage.one() %}
+<div class="main-search-container full-height alt-search-box centered" data-background-image="{{backgroundImage.url}}">
+	<div class="main-search-inner">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-12">
+					{% set accommodationPage = craft.entries().section('accommodation').one() %}
+					<form method="post" action="{{accommodationPage.uri}}">
+						{{ csrfInput() }}
+						<div class="main-search-input">
+
+							<div class="main-search-input-headline">
+								<h2>{{module.formHeading}}</h2>
+								{% if module.formSubheading %}
+								<h4>{{module.formSubheading}}</h4>
+								{% endif %}
+							</div>
+							
+							<div class="main-search-input-item locationselect">
+								<select name="location[]" data-placeholder="{{form.allLocationsLabel}}" class="chosen-select" multiple>
+								{% for location in craft.categories().group('location').level('1').all() %}
+									<optgroup label="{{location.title}}">
+									{% for location2 in craft.categories().group('location').descendantOf(location).all() %}
+										<option value="{{location2.id}}">{{location2.title}}</option>
+									{% endfor %}
+									</optgroup>
+								{% endfor %}
+								</select>
+							</div>
+
+							<div class="main-search-input-item search-input-icon">
+								<input type="text" name="date" placeholder="{{form.checkInCheckOutLabel}}" id="booking-date-search" >
+								<i class="fa fa-calendar"></i>
+							</div>
+
+							<div class="main-search-input-item booking-widget">
+								<div class="panel-dropdown">
+									<a href="#">{{form.guestLabel}} <span class="qtyTotal" name="qtyTotal">1</span></a>
+									<div class="panel-dropdown-content">
+										<!-- Quantity Buttons -->
+										<div class="qtyButtons">
+											<div class="qtyTitle">{{form.adultsLabel}}</div>
+											<input type="text" class="qtyInput" name="qtyadult" value="2">
+										</div>
+										<div class="qtyButtons">
+											<div class="qtyTitle">{{form.childrensLabel}}</div>
+											<input type="text" class="qtyInput" name="qtychildren" value="0">
+										</div>
+									</div>
+								</div>
+							</div>
+
+							<div class="main-search-input-item price-range">
+								<div class="panel-dropdown">
+									<a href="#">{{form.priceRangeLabel}}</a>
+									<div class="panel-dropdown-content ">
+										{#<input  class="distance-radius" type="range" min="30" max="150" step="5" value="50" data-title="Radius around selected destination">#}
+										<input type="text" class="distance-price" name="price" min="{{form.priceRangeSlider.min}}" max="{{form.priceRangeSlider.max}}" step="{{form.priceRangeSlider.step}}" data-minposition="{{form.priceRangeSlider.minPosition}}" data-maxposition="{{form.priceRangeSlider.maxPosition}}" id="amount" readonly>
+										<div id="slider-range"></div>
+									</div>
+								</div>
+							</div>
+
+							<button class="button" type="submit">{{form.submitButtonLabel}}</button>
+							
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,16 @@
+{% set cards = cards %}
+{% for card in cards %}
+	<!-- Stage -->
+	<div class="col-md-4">
+		<div class="icon-box-2 with-line">
+			{% if card.icon.icon %}
+			<div>
+			{{ card.icon.iconSpan|raw }}
+			</div>
+			{% endif %}
+			<h3>{{card.heading}}</h3>
+			{{card.contentText}}
+		</div>
+	</div>
+	<!-- END Stage -->
+{% endfor %}

@@ -1,0 +1,32 @@
+{% set module = module %}
+<div class="container">
+	<div class="row">
+
+		<div class="col-md-12">
+			<h3 class="headline centered margin-bottom-35 margin-top-70">
+				<strong class="headline-with-separator">{{module.heading}}</strong>
+				{% if module.subheading %}<span>{{module.subheading}}</span>{% endif %}
+			</h3>
+		</div>
+	{% set counter = 0 %}	
+	{% for category in craft.categories().group('location').level(1).all() %}
+		{% set accommodationsCount = craft.entries().section('accommodations').relatedTo(category).count %}
+		{% set accommodationPage = craft.entries().section('accommodation').one() %}
+		{% if counter % 3 == 0 %}
+              {% set counter = counter + 1 %}
+   		{% endif %}
+		{% set colwidth = counter % 2 == 1 ? '4' : '8'  %}
+		<div class="col-md-{{colwidth}}">
+			{% set image = category.featuredImage.one() %}
+			<a href="{{accommodationPage.url}}?location={{category.id}}" class="img-box" {% if image %}data-background-image="{{image.url}}"{% endif %}>
+				<div class="img-box-content visible">
+					<h4>{{category.title}}</h4>
+					<span>{{accommodationsCount}} {{module.listingsLabel}}</span>
+				</div>
+			</a>
+		</div>	
+		{% set counter = counter + 1 %}
+	{% endfor %}
+
+	</div>
+</div>

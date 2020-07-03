@@ -1,0 +1,117 @@
+{% extends 'layout' %}
+{% block main %}
+    
+<div class="contact-map margin-bottom-100">
+
+	<!-- Google Maps -->
+	{% include 'segment/singleMap.twig' with { 
+		'lat' : footer.location.lat,
+		'lng' : footer.location.lng,
+		'mapIcon' : "<i class='im im-icon-Map2'></i>"
+	} %}
+	<!-- Google Maps / End -->
+	
+	<!-- Office -->
+	<div class="address-box-container">
+		{% set image = entry.ourOfficeBackgroundImage.one() %}
+		<div class="address-container" {% if image %}data-background-image="{{image.url}}"{% endif %}>
+			<div class="office-address">
+				{% if entry.ourOfficeTitle %}<h3>{{entry.ourOfficeTitle}}</h3>{% endif %}
+				<ul>
+					<li>{{footer.location.parts.address}}</li>
+					<li>{{footer.location.parts.postcode}} {{footer.location.parts.city}}</li>
+					<li>{{footer.phoneLabel}} {{footer.phoneNumber}} </li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- Office / End -->
+
+</div>
+<div class="clearfix"></div>
+<!-- Map Container / End -->
+
+
+<!-- Container / Start -->
+<div class="container margin-bottom-100">
+
+	<div class="row">
+
+		<!-- Contact Details -->
+		<div class="col-md-4">
+			{% if entry.findUsTitle %}<h4 class="headline margin-bottom-30">{{entry.findUsTitle}}</h4>{% endif %}
+			<!-- Contact Details -->
+			<div class="sidebar-textbox">
+				{% if entry.findUsContent %}{{entry.findUsContent}}{% endif %}
+				<ul class="contact-details">
+					<li><i class="im im-icon-Phone-2"></i> <strong>{{footer.phoneLabel}}</strong> <span><a href="tel:{{footer.phoneNumber|replace('/[^+0-9]/','') }}">{{footer.phoneNumber}}</a> </span></li>
+					
+					<li><i class="im im-icon-Envelope"></i> <strong>{{footer.emailLabel}}</strong> <span><a href="mailto:{{footer.emailAddress}}">{{footer.emailAddress}}</a></span></li>
+				</ul>
+			</div>
+
+		</div>
+
+		<!-- Contact Form -->
+		<div class="col-md-8">
+
+			<section id="contact">
+				{% if entry.contactFormTitle %}<h4 class="headline margin-bottom-35">{{entry.contactFormTitle}}</h4>{% endif %}
+				
+				{% if craft.app.session.hasFlash('wheelformSuccess') %}
+				<div class="verified-badge with-tip" data-tip-content="{{form.successMessageInfo}}">
+					<i class="sl sl-icon-check"></i> {{form.successMessage}}
+				</div>
+				<br>
+				{% endif %}
+
+				{% macro errorList(errors) %}
+				    {% if errors %}
+				        <ul class="errors">
+				            {% for error in errors %}
+				                <li>{{ error }}</li>
+				            {% endfor %}
+				        </ul>
+				    {% endif %}
+				{% endmacro %}
+
+				{% from _self import errorList %}
+				{{ wheelformErrors['form'] is defined ? errorList(wheelformErrors['form']) }}
+
+					<form method="post" action="" accept-charset="UTF-8" enctype="multipart/form-data">
+						{{ csrfInput() }}
+					    <input type="hidden" name="action" value="wheelform/message/send">
+					    <input type="hidden" name="form_id" value="2">
+
+					<div class="row">
+						<div class="col-md-12">
+							<input name="name" type="text" id="name" placeholder="{{form.firstAndLastNameLabel}}" required="required" />
+						</div>
+
+						<div class="col-md-6">
+							<input name="email" type="email" id="email" placeholder="{{form.emailFormLabel}}" pattern="^[A-Za-z0-9](([_\.\-]?[a-zA-Z0-9]+)*)@([A-Za-z0-9]+)(([\.\-]?[a-zA-Z0-9]+)*)\.([A-Za-z]{2,})$" required="required" />
+						</div>
+
+						<div class="col-md-6">
+							<input name="phone" type="text" id="phone" placeholder="{{form.phoneFormLabel}}" />
+						</div>
+					</div>
+
+					<div>
+						<textarea name="message" cols="40" rows="3" id="comments" placeholder="{{form.messageLabel}}" spellcheck="true" required="required" class="margin-top-0"></textarea>
+					</div>
+
+					<input type="submit" class="submit button" id="submit" value="{{form.submitButtonLabel2}}" />
+
+					</form>
+			</section>
+		</div>
+		<!-- Contact Form / End -->
+
+	</div>
+
+</div>
+<!-- Container / End -->
+
+
+{% endblock %}
