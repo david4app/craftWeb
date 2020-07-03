@@ -1,6 +1,6 @@
 {
   "require": {
-    "craftcms/cms": "^3.4.25",
+    "craftcms/cms": "3.4.26",
     "focuslabllc/craft-cheat-sheet": "2.0.3",
     "sebastianlenz/linkfield": "1.0.23",
     "vlucas/phpdotenv": "^3.4.0"
