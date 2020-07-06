@@ -1,0 +1,45 @@
+<!-- Card -->
+							<div class="card"> <!-- Card image -->
+							<a href="about">
+								{% set image = entry.image.one() %}
+								<img src={{image.url}} class="card-img-top" alt="">
+								<div class="view overlay">
+									<a>
+										<div class="mask rgba-white-slight"></div>
+									</a>
+								</div>
+								<!-- Card image -->
+
+								<!-- Card content -->
+								<div class="card-body">
+                  {% set author = craft.entries().id(114).one() %}
+                
+									<!-- Title -->
+									<h5 class="card-title dark-grey-text text-center grey lighten-4 py-2">
+										<strong>{{author.title}}</strong>
+
+									</h5>
+						
+
+									<!-- Description -->
+									<p class="mt-3 dark-grey-text font-small text-center">
+										<em>{{author.description}}</em>
+									</p>
+
+									<ul class="list-unstyled list-inline-item circle-icons list-unstyled flex-center">
+										{% for socialnetwo in author.socialnetwork.all() %}
+
+											<li>
+												<a href="{{socialnetwo.socialNetworkUrl}}" class="fb-ic" target="blank_">
+													<i class="fab {{socialnetwo.network.value}}"></i>
+												</a>
+											</li>
+
+
+										{% endfor %}
+									</ul>
+								</div>
+								<!-- Card content -->
+
+							</div>
+							<!-- Card -->

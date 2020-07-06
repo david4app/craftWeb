@@ -97,7 +97,8 @@
 
                   <!-- Grid column -->
                   <div class="col-md-4 mb-3">
-                    <img src="https://mdbootstrap.com/img/Photos/Others/model1.jpg" class="img-fluid z-depth-1">
+                      {% set image = entry.image.one() %}
+                <img src={{image.url}} class="card-img-top" alt="" class="img-fluid z-depth-1">
                   </div>
                   <!-- Grid column -->
 
@@ -118,8 +119,8 @@
                         <blockquote class="blockquote">
                           <p class="mb-0">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere
                             erat a ante.</p>
-                          <footer class="blockquote-footer">Someone famous in
-                            <cite title="Source Title">Source Title</cite>
+                          <footer class="blockquote-footer">Bob Woodward in
+                            <cite title="Source Title">The Wall Street Journal</cite>
                           </footer>
                         </blockquote>
 
