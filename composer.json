@@ -1,8 +1,10 @@
 {
   "require": {
+    "aelvan/mailchimp-subscribe": "3.0.2",
     "craftcms/cms": "3.4.27",
     "craftcms/redactor": "2.6.1",
     "focuslabllc/craft-cheat-sheet": "2.0.3",
+    "lukeyouell/craft-mailchimplists": "1.0.5",
     "putyourlightson/craft-entry-count": "2.0.3",
     "sebastianlenz/linkfield": "1.0.23",
     "vlucas/phpdotenv": "^3.4.0",
