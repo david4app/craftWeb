@@ -175,12 +175,11 @@
 						class="archive mb-5">
 
 						<!--  Card -->
-							{% set archive = craft.entries().section('archive').all() %}
 						<div class="card card-body pb-0">
 							<div class="single-post">
 
 								<p class="font-weight-bold dark-grey-text text-center spacing grey lighten-4 py-2 mb-4">
-									<strong>ARCHIVE</strong>
+									<strong>Archive</strong>
 								</p>
 
 								<!-- Grid row -->
@@ -193,44 +192,12 @@
 
 										<!-- List -->
 										<ul class="list-unstyled">
-											<li style="padding-bottom:10px;">
-												<p class="mb-1">
-													<a href="#!" class="dark-grey-text">August 2019</a>
-												</p>
-											</li>
-											<li style="padding-bottom:10px">
-												<p class="mb-1">
-													<a href="#!" class="dark-grey-text">July 2019</a>
-												</p>
-											</li>
-											<li style="padding-bottom:10px">
-												<p class="mb-1">
-													<a href="#!" class="dark-grey-text">June 2019</a>
-												</p>
-											</li>
-											<li style="padding-bottom:10px">
-												<p class="mb-1">
-													<a href="#!" class="dark-grey-text">May 2019</a>
-												</p>
-											</li>
-											<li style="padding-bottom:10px">
-												<p class="mb-1">
-													<a href="#!" class="dark-grey-text">April 2019</a>
-												</p>
-											</li>
-											<li style="padding-bottom:10px">
-												<p class="mb-1">
-													<a href="#!" class="dark-grey-text">March 2019</a>
-												</p>
-											</li>
-											<li style="padding-bottom:10px">
-												<p class="mb-1">
-													<a href="#!" class="dark-grey-text">Febuary 2019</a>
-												</p>
-											</li>
-										</ul>
-										<!-- List -->
-
+											{% if date (postDate) < date ( postDate ='-7months') %}
+											
+											{% endif %}
+											
+										
+									
 									</div>
 									<!-- Grid column -->
 
@@ -262,14 +229,13 @@
 								<div
 									class="card text-left mb-3">
 
-									<!-- Card image -->
+								
+									
 									<div class="view overlay">
 										<div class="embed-responsive embed-responsive-16by9">
-											<iframe class="embed-responsive-item" src="https://www.youtube.com/embed/v64KOxKVLVg" allowfullscreen></iframe>
+											<iframe class="embed-responsive-item" src={{entry.video}} allowfullscreen></iframe>
 										</div>
-										<a>
-											<div class="mask rgba-white-slight"></div>
-										</a>
+										
 									</div>
 									<!-- Card image -->
 
