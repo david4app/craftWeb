@@ -1,0 +1,21 @@
+{% extends 'layout' %}
+{% block main %}
+	{#% if entry['modules'] is defined %}
+						        {% for module in entry.modules.all() %}
+						            {% include 'segment/' ~ module.type ~ '.twig' with{ 'module' : module } %}
+						        {% endfor %}
+						    {% endif %}
+						    {#% include "segment/scripts.twig" %#}
+
+	<div class="container-fluid grey lighten-4">
+
+		<div
+			class="container">
+
+			<!-- Blog -->
+			<div class="row mt-5 pt-3">
+				{% include "segment/blog3.twig" %}
+			</div>
+		</div>
+	</div>
+{% endblock %}

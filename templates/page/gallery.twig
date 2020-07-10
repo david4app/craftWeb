@@ -1,8 +1,0 @@
-{% extends 'layout' %}
-{% block main %}
-	{% if entry['modulesGallery'] is defined %}
-        {% for module in entry.modulesGallery.all() %}
-            {% include 'segment/' ~ module.type ~ '.twig' with{ 'module' : module } %}
-        {% endfor %}
-    {% endif %}
-{% endblock %}
