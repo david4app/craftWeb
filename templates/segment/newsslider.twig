@@ -1,0 +1,78 @@
+{% set randomNews = randomNews %}
+<!-- Featured posts -->
+<section class="mb-5">
+	{#% set newssliderEntry = craft.entries().section('homepage').modules.type("blogsection").one() %#}
+
+	<!-- Grid row -->
+		<div
+		class="row mt-4"> <!-- Grid column -->
+		<div class="col-md-12">
+
+			<!-- Carousel Wrapper -->
+			<div id="carousel-example-4" class="carousel slide carousel-fade z-depth-1-half" data-ride="carousel">
+
+				<!-- Indicators -->
+				 <ol class="carousel-indicators">
+                {% for key, randomNew in randomNews %}
+                    <li data-target="#carousel-example-4" data-slide-to="{{key}}" class="{{loop.first ? 'active'}}"></li>
+                 {% endfor %}
+                </ol>
+                <!-- Indicators -->
+
+                <!-- Slides -->
+                <div class="carousel-inner" role="listbox">
+
+					{% for randomNew in randomNews %}
+						
+                        <!-- First slide -->
+                      <div class="carousel-item {{loop.first ? 'active'}}">
+                        <!-- Mask color -->
+                        <div class="view">
+                          <img src="https://mdbootstrap.com/img/Photos/Horizontal/Nature/8-col/img%20(126).jpg"
+                            class="img-fluid" alt="">
+                          <a href="{{randomNew.url}}">
+                            <div class="mask flex-center rgba-stylish-strong"></div>
+                          </a>
+                        </div>
+                        <!-- Caption -->
+                        <div class="carousel-caption">
+                          <div class="animated fadeInDown">
+                            <h4 class="h4-responsive">
+                              <a href="{{randomNew.url}}" class="white-text font-weight-bold">{{randomNew.title }}</a>
+                            </h4>
+                            <p>
+                              <a href="{{randomNew.url}}" class="white-text">{{randomNew.description|striptags|slice(0, 20)  }}</a>
+                            </p>
+                          </div>
+                        </div>
+                        <!-- Caption -->
+                      </div>
+                      <!-- First slide -->
+					
+					{% endfor %}
+
+                </div>
+                <!-- Slides -->
+
+
+				<!-- Controls -->
+				<a class="carousel-control-prev" href="#carousel-example-4" role="button" data-slide="prev">
+					<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+					<span class="sr-only">Previous</span>
+				</a>
+				<a class="carousel-control-next" href="#carousel-example-4" role="button" data-slide="next">
+					<span class="carousel-control-next-icon" aria-hidden="true"></span>
+					<span class="sr-only">Next</span>
+				</a>
+				<!-- Controls -->
+			</div>
+			<!-- Carousel Wrapper -->
+               
+
+		</div>
+		<!-- Grid column -->
+	</div>
+	<!-- Grid row -->
+
+</section>
+<!-- Featured posts -->

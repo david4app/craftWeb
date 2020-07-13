@@ -1,0 +1,54 @@
+<!-- Section: Featured posts -->
+<section
+	class="section widget-content mt-5">
+
+	<!--  Card -->
+	<div class="card card-body pb-0">
+		<p class="font-weight-bold dark-grey-text text-center spacing grey lighten-4 py-2 mb-4">
+			<strong>Popular posts</strong>
+		</p>
+		{% set popularPosts = craft.entries().section('popularPosts').all() | sort %}
+		{% for popularPost in popularPosts %}
+
+
+			<div
+				class="single-post">
+
+
+				<!-- Grid row -->
+				<div class="row mb-4">
+					<div class="col-5">
+
+						<!-- Image -->
+						<!--<div class="view overlay">-->
+						{% set image = popularPost.image.one() %}
+						<img src="{{image.url}}" class="img-fluid z-depth-1 rounded-0" alt="sample image"> <a>
+							<div class="mask rgba-white-slight"></div>
+						</a>
+						<!--</div>-->
+					</div>
+
+					<!-- Excerpt -->
+					<div class="col-7">
+						<h6 class="mt-0 font-small">
+							<a>
+								<strong>{{popularPost.title}}</strong>
+							</a>
+						</h6>
+
+						<div class="post-data">
+							<p class="font-small grey-text mb-0">
+								<i class="far fa-clock-o"></i>
+								{{ popularPost.postDate | date("m/d/Y") }}</p>
+						</div>
+					</div>
+					<!--  Excerpt -->
+				</div>
+				<!--  Grid row -->
+			</div>
+		{% endfor %}
+
+
+	</div>
+</section>
+<!--  Section: Featured posts -->

@@ -11,7 +11,10 @@
 
 		<div
 			class="container">
-
+				{% set homeEntry = craft.entries().section('homepage').one %}
+				{% set limit = homeEntry.modules.type('blogsection').newsPerPage %}
+				
+			
 			<!-- Blog -->
 			<div class="row mt-5 pt-3">
 				{% include "segment/blog3.twig" %}

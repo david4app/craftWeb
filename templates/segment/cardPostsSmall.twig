@@ -1,0 +1,41 @@
+{% set news = news %}
+{% for new in news %}
+
+
+<!-- Grid row -->
+<div class="row {{loop.first ? "mt-4"}} "> 
+
+
+	<!-- Grid column -->
+	<div class="col-4">
+
+		<!-- Image -->
+		<div class="view overlay z-depth-1 mb-3">
+			<img src="https://mdbootstrap.com/img/Photos/Others/photo12.jpg" class="img-fluid" alt="Post">
+			<a>
+				<div class="mask rgba-white-slight"></div>
+			</a>
+		</div>
+
+	</div>
+	<!-- Grid column -->
+
+	<!-- Second column -->
+	<div class="col-8 mb-1">
+
+		<!-- Post data -->
+		<div class="">
+			<p class="mb-1">
+				<a href="#!" class="text-hover font-weight-bold">Sed ut in perspiciatis unde omnis</a>
+			</p>
+			<p class="font-small grey-text">
+				<em>July 22, 2017</em>
+			</p>
+		</div>
+
+	</div>
+	<!-- Second column -->
+
+</div>
+<!-- Grid row -->
+{% endfor %}

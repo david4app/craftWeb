@@ -1,0 +1,194 @@
+{% set module = module %}
+<!-- Blog section -->
+	<section>
+		<div class="container-fluid grey lighten-4">
+			<hr class="my-0">
+			<div
+				class="container">
+
+				<!-- Blog -->
+				<div class="row mt-5 pt-3">
+
+					<!-- Main listing -->
+					<div class="col-lg-8 col-12 mt-1 mx-lg-4">
+
+						{% include 'segment/blog3.twig' with {'limit': module.newsPerPage} %}
+
+					</div>
+					<!-- Main listing -->
+
+
+					<!-- Sidebar -->
+					<div class="col-lg-3 col-12 mt-1">
+						<!-- Sidebar -->
+
+
+						{% include 'segment/cardauthor.twig' %}
+						{% include 'segment/popularPosts.twig' %}
+						
+						<!-- Newsletter -->
+						<section class="my-5">
+
+							<!--  Card -->
+							<div class="card card-body pb-0">
+								<div class="single-post">
+									{% set newsletter = craft.entries.section('newsletter').one() %}
+									<p class="font-weight-bold dark-grey-text text-center spacing grey lighten-4 py-2 mb-4">
+										<strong>{{newsletter.title}}</strong>
+									</p>
+
+									<!-- Grid row -->
+									<div
+										class="row mt-4">
+
+										<!-- Grid column -->
+										<div class="col-md-12">
+											<form method="post" action="" accept-charset="UTF-8">
+												{{ csrfInput() }}
+												<input type="hidden" name="action" value="mailchimp-lists/subscribe">
+												<input type="hidden" name="listId" value="{{ '663154e1a2'|hash }}">
+												<input type="hidden" name="status" value="{{ 'subscribed'|hash }}">
+
+												<div class="input-group md-form form-sm form-3 pl-1">
+													<div class="input-group-prepend">
+														<span class="input-group-text white black-text" id="basic-addon9">@</span>
+													</div>
+
+													<input type="email" name="email_address" class="form-control mt-0 black-border rgba-white-strong" placeholder="email" aria-describedby="basic-addon9">
+												</div>
+
+												<button type="submit" class="btn btn-grey btn-block my-4 waves-effect waves-light">Sign up</button>
+
+											</form>
+										</div>
+										<!-- Grid column -->
+
+									</div>
+									<!-- Grid row -->
+
+								</div>
+							</div>
+
+						</section>
+						<!-- Newsletter -->
+
+						<!-- Archive -->
+						<section
+							class="archive mb-5">
+
+							<!--  Card -->
+							<div class="card card-body pb-0">
+								<div class="single-post">
+
+									<p class="font-weight-bold dark-grey-text text-center spacing grey lighten-4 py-2 mb-4">
+										<strong>Archive</strong>
+									</p>
+
+									<!-- Grid row -->
+									<div
+										class="row mb-4">
+
+										<!-- Grid column -->
+										<div class="col-md-12 text-center">
+
+											<ul class="list-unstyled">
+												{% set archiveEntry = craft.entries().section('archive').one() %}
+												{% set lastArchiveEntry = craft.entries().section('news').one() %}
+
+												{% for i in 0..6 %}
+													{#% if condition %}{% endif %#}
+
+													<li>
+														<p class="mb-1">
+															<a href="{{archiveEntry.url}}?date={{lastArchiveEntry.postDate|date_modify("first day of -" ~ i ~ " month")|date('m/d/Y')}}" class="dark-grey-text">
+																{{lastArchiveEntry.postDate|date_modify("first day of -" ~ i ~ " month")|date('F Y') }}
+															</a>
+														</p>
+													</li>
+												{% endfor %}
+
+
+											</ul>
+
+										</div>
+										<!-- Grid column -->
+
+									</div>
+									<!-- Grid row -->
+
+								</div>
+
+							</div>
+							<!--  Card -->
+
+						</section>
+						<!-- Archive -->
+
+
+						<!-- Popular posts -->
+						<section
+							class="mb-4">
+
+							<!-- Grid row -->
+							<div
+								class="row mt-4">
+
+								<!-- Grid column -->
+								<div
+									class="col-md-12 col-lg-12">
+
+									<!-- Card -->
+									<div class="card text-left mb-3">
+
+
+										<div class="view overlay">
+											<div class="embed-responsive embed-responsive-16by9">
+												<iframe class="embed-responsive-item" src={{entry.video}} allowfullscreen></iframe>
+											</div>
+
+										</div>
+										<!-- Card image -->
+
+										<!-- Card content -->
+										<div
+											class="card-body mx-2">
+
+											<!-- Title -->
+											<a href="{{entry.video}}">
+												<h5 class="card-title text-center my-2">
+													<strong>Visit my YouTube channel!</strong>
+												</h5>
+											</a>
+
+										</div>
+										<!-- Card content -->
+
+									</div>
+									<!-- Card -->
+								</div>
+								<!-- Grid column -->
+
+							</div>
+							<!-- Grid row -->
+
+						</section>
+						<!-- Popular posts -->
+
+						{% include "page/category.twig" %}
+						{% set sidebar = module.sidebar.one() %}
+						{% include "segment/newsslider.twig" with {'randomNews': sidebar.randomNews.all()} %} 
+
+					</div>
+					<!-- Sidebar -->
+					{#% include 'header.twig' %#}
+
+				</div>
+				<!-- Sidebar -->
+
+			</div>
+			<!-- Blog -->
+
+		</div>
+
+	</div>
+</section><!-- Blog section -->

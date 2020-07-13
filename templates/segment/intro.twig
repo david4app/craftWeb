@@ -1,10 +1,12 @@
+{% set module = module %}
+{% set headingBold = module.heading|split(' ') %}
 <!-- Intro -->
 		<section class="bg-white"> <div class="container-fluid">
 			<br>
 			<h1 class="text-center dark-grey-text pb-3 mt-5 pt-5">
-				<strong>{{entry.head2}}</strong></h1>
+				<strong>{{headingBold[0]}}</strong> {{headingBold[1]}}</h1>
 
-			<p class="grey-text text-center mb-4 text-uppercase spacing">{{entry.head3}}
+			<p class="grey-text text-center mb-4 text-uppercase spacing">{{module.subheading}}
 			</p>
 
 			<!-- Grid row -->
@@ -15,8 +17,7 @@
 				<div class="col-md-10 col-xl-5">
 
 					<p class="grey-text text-center" style="font-size: 13.92px">
-						<em>{{entry.description}}	</em>
-					</p>
+						<em> {{module.description}}	 </em></p>
 					<br><br>
 				</div>
 				<!-- Grid column -->
@@ -25,5 +26,5 @@
 			<!-- Grid row -->
 
 		</div>
-	</section>
-	<!-- Intro -->
+	</section> 
+	<!-- Intro --> 

@@ -1,3 +1,5 @@
+{% set limit = limit %}
+
 {% set date = craft.app.request.getParam('date') %}
 {% set categoryId = craft.app.request.getParam('categoryId') %}
 
@@ -10,12 +12,12 @@
 		{% if date %}
 			{% set firstDayOfMonth = date | date_modify('first day of this month') | date('m/d/Y')|atom %}
 			{% set lastDayOfMonth = date | date_modify('last day of this month') | date('m/d/Y')|atom %}
-			{% set query = craft.entries().section('news').postDate(['and', ">= #{firstDayOfMonth}", "< #{lastDayOfMonth}"]).limit(8) %}
+			{% set query = craft.entries().section('news').postDate(['and', ">= #{firstDayOfMonth}", "< #{lastDayOfMonth}"]).limit(limit) %}
 		{% elseif categoryId %}
 			{% set category = craft.categories.id(categoryId).one() %}
-			{% set query = craft.entries.section('news').limit(8).relatedTo(category) %}
+			{% set query = craft.entries.section('news').limit(limit).relatedTo(category) %}
 		{% else %}
-			{% set query = craft.entries().section('news').limit(8) %}
+			{% set query = craft.entries().section('news').limit(limit) %}
 		{% endif %}
 
 		{% paginate query as pageInfo, pageEntries %}

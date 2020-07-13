@@ -8,6 +8,7 @@
     "mikestecker/craft-videoembedder": "1.1.4",
     "putyourlightson/craft-entry-count": "2.0.3",
     "sebastianlenz/linkfield": "1.0.23",
+    "twig/extensions": "^1.5",
     "verbb/super-table": "2.5.1",
     "vlucas/phpdotenv": "^3.4.0",
     "xpertbot/craft-wheelform": "2.4.2"

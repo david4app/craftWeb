@@ -1,0 +1,30 @@
+<!-- Footer Links -->
+<div
+	class="container">
+
+	<!-- First row -->
+	<div
+		class="row">
+
+		<!-- First column -->
+		<div class="col-md-12 py-4">
+
+			<div class="footer-socials mb-5 flex-center">
+				{% for footerlink in footer.socialnetwork.all() %}
+
+						<a href="{{ footerlink.socialNetworkUrl}}" class="fb-ic" target="blank_">
+							<i class="fab {{footerlink.network.value}} fa-lg white-text mr-md-5 mr-3 fa-lg"></i>
+						</a>
+
+
+				{% endfor %}
+
+				
+
+			</div>
+		</div>
+		<!-- First column -->
+	</div>
+	<!-- First row -->
+</div>
+<!-- Footer Links -->
