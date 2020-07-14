@@ -11,7 +11,7 @@
     "twig/extensions": "^1.5",
     "verbb/super-table": "2.5.1",
     "vlucas/phpdotenv": "^3.4.0",
-    "xpertbot/craft-wheelform": "2.4.2"
+    "xpertbot/craft-wheelform": "2.4.3"
   },
   "require-dev": {
     "yiisoft/yii2-shell": "^2.0.3"

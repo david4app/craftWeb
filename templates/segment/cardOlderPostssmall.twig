@@ -1,0 +1,44 @@
+{% set news = news %}
+{% for new in news %}
+
+
+	<!-- Grid row -->
+	<div
+		class="row {{loop.first ? " mt-4"}} ">
+
+
+		<!-- Grid column -->
+		<div
+			class="col-4">
+
+			<!-- Image -->
+			<div class="view overlay z-depth-1 mb-3">
+				<img src={{new.image.one().url}} class="img-fluid" alt="Post">
+				<a href={{new.url}}>
+					<div class="mask rgba-white-slight"></div>
+				</a>
+			</div>
+
+		</div>
+		<!-- Grid column -->
+
+		<!-- Second column -->
+		<div
+			class="col-8 mb-1">
+
+			<!-- Post data -->
+			<div class="">
+				<p class="mb-1">
+					<a href={{new.url}} class="text-hover font-weight-bold">{{new.title}}</a>
+				</p>
+				<p class="font-small grey-text">
+					<em>{{footer.footerSection.olderPostsDate|date('F m, Y')}}</em>
+				</p>
+			</div>
+
+		</div>
+		<!-- Second column -->
+
+	</div>
+	<!-- Grid row -->
+{% endfor %}

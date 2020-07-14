@@ -1,11 +1,9 @@
 <section>
 	<div class="container-fluid white mb-0 pb-0">
 		<hr class="mt-0">
-		<div
-			class="container">
+		<div class="container">
 			<!-- Grid row -->
-			<div
-				class="row">
+			<div class="row">
 
 				<!-- Grid column -->
 				<div class="col-lg-4 col-md-12">
@@ -28,133 +26,12 @@
 
 				</div>
 				<!-- Grid column -->
-
-				<!-- Grid column -->
 				<div class="col-lg-4 col-md-6">
 					<h6 class="font-weight-bold mt-5 mb-3">{{footer.footerSection.olderPostsTitle}}</h6>
-					<hr
-					class="mb-5">
+					<hr class="mb-5">
 
-					<!-- Grid row -->
-					<div
-						class="row mt-4">
-
-						<!-- Grid column -->
-						<div
-							class="col-4">
-
-							<!-- Image -->
-							<div class="view overlay z-depth-1 mb-3">
-								<img src="https://mdbootstrap.com/img/Photos/Others/photo1.jpg" class="img-fluid" alt="Post">
-								<a>
-									<div class="mask rgba-white-slight"></div>
-								</a>
-							</div>
-
-						</div>
-						<!-- Grid column -->
-
-						<!-- Second column -->
-						<div
-							class="col-8 mb-1">
-
-							<!-- Post data -->
-							<div class="">
-								<p class="mb-1">
-									<a href="#!" class="text-hover font-weight-bold">Sed ut in perspiciatis unde omnis</a>
-								</p>
-								<p class="font-small grey-text">
-									<em>July 22, 2017</em>
-								</p>
-							</div>
-
-						</div>
-						<!-- Second column -->
-
-					</div>
-					<!-- Grid row -->
-
-					<!-- Grid row -->
-					<div
-						class="row">
-
-						<!-- Grid column -->
-						<div
-							class="col-4">
-
-							<!-- Image -->
-							<div class="view overlay z-depth-1 mb-3">
-								<img src="https://mdbootstrap.com/img/Photos/Others/photo9.jpg" class="img-fluid" alt="Post">
-								<a>
-									<div class="mask rgba-white-slight"></div>
-								</a>
-							</div>
-
-						</div>
-						<!-- Grid column -->
-
-						<!-- Second column -->
-						<div
-							class="col-7 mb-1">
-
-							<!-- Post data -->
-							<div class="">
-								<p class="mb-1">
-									<a href="#!" class="text-hover font-weight-bold">At vero eos et accusamus et
-									</a>
-								</p>
-								<p class="font-small grey-text">
-									<em>July 22, 2017</em>
-								</p>
-							</div>
-
-						</div>
-						<!-- Second column -->
-
-					</div>
-					<!-- Grid row -->
-
-					<!-- Grid row -->
-					<div
-						class="row">
-
-						<!-- Grid column -->
-						<div
-							class="col-4">
-
-							<!-- Image -->
-							<div class="view overlay z-depth-1 mb-3">
-								<img src="https://mdbootstrap.com/img/Photos/Others/photo4.jpg" class="img-fluid" alt="Post">
-								<a>
-									<div class="mask rgba-white-slight"></div>
-								</a>
-							</div>
-
-						</div>
-						<!-- Grid column -->
-
-						<!-- Second column -->
-						<div
-							class="col-7 mb-1">
-
-							<!-- Post data -->
-							<div class="">
-								<p class="mb-1">
-									<a href="#!" class="text-hover font-weight-bold">Nemo enim ipsam voluptatem</a>
-								</p>
-								<p class="font-small grey-text">
-									<em>July 22, 2017</em>
-								</p>
-							</div>
-
-						</div>
-						<!-- Second column -->
-
-					</div>
-					<!-- Grid row -->
-
-				</div>
-				<!-- Grid column -->
+					{% include "segment/cardOlderPostssmall.twig" with { 'news' : craft.entries().section('news').limit(3) } %} 
+				
 
 			</div>
 			<!-- Grid row -->
@@ -178,7 +55,11 @@
 		</a>
 	</div>
 </div>
-<!-- Copyright --></footer><!-- Footer --><!-- SCRIPTS --><!-- JQuery --><script type="text/javascript" src="/assets/js/jquery-3.4.1.min.js"> </script><!-- Bootstrap tooltips --><script type="text/javascript" src="/assets/js/popper.min.js"></script><!-- Bootstrap core JavaScript --><script type="text/javascript" src="/assets/js/bootstrap.min.js"></script><!-- MDB core JavaScript --><script type="text/javascript" src="/assets/js/mdb.min.js"></script><!-- Custom scripts --><script type="text/javascript">
+<!-- Copyright -->
+</footer><!-- Footer --><!-- SCRIPTS --><!-- JQuery --><script type="text/javascript" src="/assets/js/jquery-3.4.1.min.js">
+</script><!-- Bootstrap tooltips --><script type="text/javascript" src="/assets/js/popper.min.js">
+</script><!-- Bootstrap core JavaScript --><script type="text/javascript" src="/assets/js/bootstrap.min.js">
+</script><!-- MDB core JavaScript --><script type="text/javascript" src="/assets/js/mdb.min.js"></script><!-- Custom scripts --><script type="text/javascript">
 // Animation
 new WOW().init();
 

@@ -1,65 +1,52 @@
 <!-- Navigation -->
-  <header>
+<header>
 
-    <!-- Navbar -->
-    <nav class="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar white">
-      <div class="container-fluid justify-content-center align-items-center">
+	<!-- Navbar -->
+	<nav class="navbar fixed-top navbar-expand-lg navbar-light scrolling-navbar white">
+		<div class="container-fluid justify-content-center align-items-center">
 
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4"
-          aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
-          <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent-4">
-          <ul class="navbar-nav">
-
-
-
-  {#{ dump(header.navigation) }#}
-
-            {% for menu in header.navigation.all() %}
-
-	                    {% if not menu.navlink.isEmpty() %}
-
-            <li class="nav-item dropdown ml-4 mb-0">
-              <a href="{{menu.navlink.getUrl()}}" class="nav-link waves-effect waves-light font-weight-bold"> {{menu.navlink.getText()|raw}}
-              </a>
-
-            </li>
-
-            {% endif %}
-
-            {% endfor %} 
+			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent-4" aria-controls="navbarSupportedContent-4" aria-expanded="false" aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<div class="collapse navbar-collapse justify-content-center" id="navbarSupportedContent-4">
+				<ul
+					class="navbar-nav">
 
 
+					{#{ dump(header.navigation) }#}
 
-          </ul>
-        </div>
+					{% for menu in header.navigation.all() %}
 
-        <ul class="navbar-nav ml-auto nav-flex-icons">
-          <li class="nav-item">
-            <a class="nav-link waves-effect waves-light">
-              <i class="fab fa-twitter"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect waves-light">
-              <i class="fab fa-google-plus-g"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect waves-light">
-              <i class="fab fa-linkedin-in"></i>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link waves-effect waves-light">
-              <i class="fab fa-instagram"></i>
-            </a>
-          </li>
-        </ul>
-      </div>
+						{% if not menu.navlink.isEmpty() %}
 
-    </nav>
-    <!-- Navbar -->
+							<li class="nav-item dropdown ml-4 mb-0">
+								<a href="{{menu.navlink.getUrl()}}" class="nav-link waves-effect waves-light font-weight-bold">
+									{{menu.navlink.getText()|raw}}
+								</a>
 
-  </header>
+							</li>
+
+						{% endif %}
+
+					{% endfor %}
+
+
+				</ul>
+			</div>
+			<ul class="navbar-nav ml-auto nav-flex-icons">
+				{% for headerlink in header.socialnetwork.all() %}
+					<li class="nav-item">
+						<a href="{{ headerlink.socialNetworkUrl}}" class="nav-link waves-effect waves-light" target="blank_">
+							<i class="fab {{headerlink.network.value}}"></i>
+						</a>
+					</li>
+
+				{% endfor %}
+			</ul>
+
+		</div>
+
+	</nav>
+	<!-- Navbar -->
+
+</header>
