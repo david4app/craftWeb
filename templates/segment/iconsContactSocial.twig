@@ -1,0 +1,23 @@
+<div>
+	<div>
+		<hr class="hr-light my-4">
+
+		<ul class="list-inline text-center list-unstyled">
+
+            {% for footerlink in footer.socialnetwork.all() %}
+
+						<a href="{{ footerlink.socialNetworkUrl}}" class="fb-ic" target="blank_">
+							<i class="fab {{footerlink.network.value}} fa-lg white-text mr-md-5 mr-3 fa-lg"></i>
+						</a>
+
+
+				{% endfor %}
+
+			
+
+		</ul>
+
+	</div>
+
+</div>
+<!-- Grid column -->

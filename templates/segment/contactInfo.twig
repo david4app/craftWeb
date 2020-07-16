@@ -1,0 +1,36 @@
+{% set module = module %}
+<h3 class="my-4 pb-2">{{module.headingContact}}</h3>
+<hr class="hr-light my-4">
+<ul class="text-lg-left list-unstyled ml-4">
+
+
+	{% for block in module.contactInformation %}
+		{% for field in block.getFieldLayout().getFields() %}
+			{% switch field.handle %}
+				{% case "city" %}
+					<li>
+						<p>
+							<i class="fas fa-map-marker-alt pr-2 mb-4"></i>
+							{{block.getFieldValue(field.handle)}}
+						</p>
+					</li>
+				{% case "phone" %}
+					<li>
+						<p>
+							<i class="fas fa-phone pr-2 mb-4"></i>
+							{{block.getFieldValue(field.handle)}}</p>
+					</li>
+				{% case "email" %}
+					<li>
+						<p>
+							<i class="fas fa-envelope pr-2"></i>
+							{{block.getFieldValue(field.handle)}}</p>
+					</li>
+				{% default %}
+					<p>
+						NO IKONE
+					</p>
+			{% endswitch %}
+		{% endfor %}
+	{% endfor %}
+</ul>

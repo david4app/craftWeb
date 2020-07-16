@@ -1,0 +1,13 @@
+{% set images = images %}
+{% for image in images %}
+
+	<!-- Grid column -->
+	<div class="col-md-{{images|length == 1 ? '12' : images|length == 2 ? '6' : '4'}} mb-2">
+		<div class="view zoom z-depth-1">
+			<img src="{{image.url}}" class="img-fluid rounded-0" alt="{{image}}">
+			<div class="mask flex-center"></div>
+		</div>
+	</div>
+	<!-- Grid column -->
+
+{% endfor %}

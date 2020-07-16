@@ -1,46 +1,11 @@
-<section>
-	<div class="container-fluid white mb-0 pb-0">
-		<hr class="mt-0">
-		<div class="container">
-			<!-- Grid row -->
-			<div class="row">
+{% if entry.id != 532 %}
 
-				<!-- Grid column -->
-				<div class="col-lg-4 col-md-12">
-					<h6 class="font-weight-bold mt-5 mb-3">{{footer.footerSection.aboutTitle}}</h6>
-					<hr class="mb-5">
-					<img src="{{footer.footerSection.aboutImage.one().url}}" alt="{{footer.footerSection.aboutImage.one().title}}" class="img-fluid z-depth-1">
-					<p class="mt-4 mb-5">{{footer.footerSection.aboutDescription}}</p>
-				</div>
-				<!-- Grid column -->
+{% include "segment/beforefooter.twig" %}
 
-				<!-- Grid column -->
-				<div class="col-lg-4 col-md-6">
-					<h6 class="font-weight-bold mt-5 mb-3">{{footer.footerSection.latestPostsTitle}}</h6>
-					<hr class="mb-5">
+{% endif %}
 
-			
-				
-					{% include "segment/cardPostsSmall.twig" with { 'news' : craft.entries().section('news').limit(3) } %}
-				
 
-				</div>
-				<!-- Grid column -->
-				<div class="col-lg-4 col-md-6">
-					<h6 class="font-weight-bold mt-5 mb-3">{{footer.footerSection.olderPostsTitle}}</h6>
-					<hr class="mb-5">
 
-					{% include "segment/cardOlderPostssmall.twig" with { 'news' : craft.entries().section('news').limit(3) } %} 
-				
-
-			</div>
-			<!-- Grid row -->
-
-		</div>
-	</div>
-</section>
-<!-- Latest posts -->
-</main>
 <!-- Footer -->
 <footer class="page-footer stylish-color mt-0 pt-0 text-center text-md-left">
 

@@ -1,17 +1,15 @@
-
 {% extends 'layout' %}
 {% block main %}
-    entry.sectionId{{entry.sectionId}}
-    {% if craft.entries().section('news')%}
-    {% set count = craft.entryCount.count(entry.id) %}
-        {% set enroll = craft.sections.getSectionByHandle('workshopEnrollments') %}
-{{ enroll.id }}
-        {% endif %}
+	entry.sectionId{{entry.sectionId}}
+	{% if craft.entries().section('news')%}
+		{% set count = craft.entryCount.count(entry.id) %}
+		{% set enroll = craft.sections.getSectionByHandle('workshopEnrollments') %}
+		{{ enroll.id }}
+	{% endif %}
 
-    {% if entry['modules'] is defined %}
-        {% for module in entry.modules.all() %}
-            {% include 'segment/' ~ module.type ~ '.twig' with{ 'block' : module } %}
-        {% endfor %}
-    {% endif %}
+	{% if entry['modules'] is defined %}
+		{% for module in entry.modules.all() %}
+			{% include 'segment/' ~ module.type ~ '.twig' with{ 'block' : module } %}
+		{% endfor %}
+	{% endif %}
 {% endblock %}
-

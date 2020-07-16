@@ -7,6 +7,7 @@
 		<p class="font-weight-bold dark-grey-text text-center spacing grey lighten-4 py-2 mb-4">
 			<strong>Popular posts</strong>
 		</p>
+	
 		{% set popularPosts = craft.entries().section('popularPosts').all() | sort %}
 		{% for popularPost in popularPosts %}
 
